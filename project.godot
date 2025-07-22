@@ -13,7 +13,10 @@ config_version=5
 config/name="HTTYD-CardGame"
 run/main_scene="uid://b4xce1rmbhqog"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+
+[autoload]
+
+CardManager="*res://app/core/manager/CardManager.cs"
 
 [dotnet]
 

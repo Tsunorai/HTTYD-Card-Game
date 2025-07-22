@@ -3,11 +3,11 @@ using System;
 
 public partial class Card : Node
 {
-	private CardData m_Card;
-	public CardData Data => m_Card;
+    private CardData m_Card;
+    public CardData Data => m_Card;
 
-    public void Init(CardData cardData)
-	{
+    public Card(CardData cardData)
+    {
         if (cardData == null)
         {
             GD.PrintErr("CardData cannot be null");

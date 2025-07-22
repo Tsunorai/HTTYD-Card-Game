@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjtr5axui7knq"]
-
-[ext_resource type="PackedScene" uid="uid://078r276v3cp8" path="res://app/ui/cards/UICard.tscn" id="1_n0yii"]
-
-[node name="UiDeck" type="Node2D"]
-
-[node name="UiCard" parent="." instance=ExtResource("1_n0yii")]
