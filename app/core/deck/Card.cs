@@ -3,15 +3,16 @@ using System;
 
 public partial class Card : Node
 {
-	public CardData card;
+	private CardData m_Card;
+	public CardData Data => m_Card;
 
-	public void Init(CardData cardData)
+    public void Init(CardData cardData)
 	{
-		card = cardData;
-    }
-
-	public int Attack()
-	{
-		return card.Attack;
+        if (cardData == null)
+        {
+            GD.PrintErr("CardData cannot be null");
+            return;
+        }
+        m_Card = cardData;
     }
 }

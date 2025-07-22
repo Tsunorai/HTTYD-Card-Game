@@ -3,49 +3,49 @@ using System;
 
 public partial class UICard : Control
 {
-    private Card card;
+    private Card m_Card;
 
-    private Label nameLabel;
-    private TextureRect imageTexture;
-    private Label classLabel;
-    private TextEdit descriptionText;
-    private Label attackLabel;
-    private Label defenseLabel;
-    private Label speedLabel;
+    private Label m_MameLabel;
+    private TextureRect m_ImageTexture;
+    private Label m_ClassLabel;
+    private TextEdit m_DescriptionText;
+    private Label m_AttackLabel;
+    private Label m_DefenseLabel;
+    private Label m_Speed;
 
     public override void _Ready()
     {
-        nameLabel = GetNode<Label>("Name");
-        imageTexture = GetNode<TextureRect>("Image");
-        classLabel = GetNode<Label>("Class");
-        descriptionText = GetNode<TextEdit>("Description");
-        attackLabel = GetNode<Label>("Attack");
-        defenseLabel = GetNode<Label>("Defense");
-        speedLabel = GetNode<Label>("Speed");
+        m_MameLabel = GetNode<Label>("CenterContainer/VBoxContainer/Name");
+        m_ImageTexture = GetNode<TextureRect>("CenterContainer/VBoxContainer/Image");
+        m_ClassLabel = GetNode<Label>("CenterContainer/VBoxContainer/Class");
+        m_DescriptionText = GetNode<TextEdit>("CenterContainer/VBoxContainer/Description");
+        m_AttackLabel = GetNode<Label>("CenterContainer/VBoxContainer/Stats/Attack");
+        m_DefenseLabel = GetNode<Label>("CenterContainer/VBoxContainer/Stats/Defense");
+        m_Speed = GetNode<Label>("CenterContainer/VBoxContainer/Stats/Speed");
     }
 
     public void Init(Card card)
     {
-        if (this.card == null)
-        {
-            GD.PrintErr("Card data is not initialized.");
-            return;
-        }
-        this.card = card;
+        m_Card = card;
         UpdateUI();
     }
 
     public void UpdateUI()
     {
-        if (card.card is CardData data)
+        if (m_Card == null)
         {
-            nameLabel.Text = data.Name;
-            imageTexture.Texture = data.Image;
-            classLabel.Text = data.Class;
-            descriptionText.Text = data.Description;
-            attackLabel.Text = $"Attack: {data.Attack}";
-            defenseLabel.Text = $"Defense: {data.Defense}";
-            speedLabel.Text = $"Speed: {data.Speed}";
+            GD.PrintErr("UICard: Card is not initialized.");
+            return;
+        }
+        if (m_Card.Data is CardData data)
+        {
+            m_MameLabel.Text = data.Name;
+            m_ImageTexture.Texture = data.Image;
+            m_ClassLabel.Text = data.Class;
+            m_DescriptionText.Text = data.Description;
+            m_AttackLabel.Text = $"Attack: {data.Attack}";
+            m_DefenseLabel.Text = $"Defense: {data.Defense}";
+            m_Speed.Text = $"Speed: {data.Speed}";
         }
         else
         {
