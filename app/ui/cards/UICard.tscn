@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://078r276v3cp8"]
+
+[ext_resource type="Script" uid="uid://duvx4e2i2pjv1" path="res://app/ui/cards/UICard.cs" id="1_fmqh5"]
+[ext_resource type="Texture2D" uid="uid://6j6pr4vx6s0c" path="res://app/assets/resources/cards/card-background.png" id="2_3xd5t"]
+[ext_resource type="Texture2D" uid="uid://cmv5w8fvpgkrb" path="res://app/assets/resources/cards/dragon.jpg" id="3_fmqh5"]
+
+[node name="UiCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fmqh5")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 384.0
+offset_bottom = 535.0
+texture = ExtResource("2_3xd5t")
+expand_mode = 4
+flip_h = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 387.0
+offset_bottom = 537.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Night Fury"
+horizontal_alignment = 1
+
+[node name="Image" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_fmqh5")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Class" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Strike"
+
+[node name="Description" type="TextEdit" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/background_color = Color(0.313726, 0.313726, 0.313726, 0)
+text = "A rare and intelligent dragon known for its incredible speed, stealth, and plasma blasts."
+wrap_mode = 1
+
+[node name="Stats" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Attack" type="Label" parent="CenterContainer/VBoxContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Attack: 95"
+
+[node name="Defense" type="Label" parent="CenterContainer/VBoxContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Defence: 80"
+
+[node name="Speed" type="Label" parent="CenterContainer/VBoxContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Speed: 100"
