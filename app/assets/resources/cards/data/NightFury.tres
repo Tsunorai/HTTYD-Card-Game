@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://t50higlff8ju"]
+
+[ext_resource type="Texture2D" uid="uid://cmv5w8fvpgkrb" path="res://app/assets/resources/cards/dragon.jpg" id="1_oh2ry"]
+[ext_resource type="Script" uid="uid://bro3vrqtdlxh6" path="res://app/assets/resources/cards/CardData.cs" id="1_rixi2"]
+
+[resource]
+script = ExtResource("1_rixi2")
+Id = "night_fury"
+Name = "Night Fury"
+Image = ExtResource("1_oh2ry")
+Class = "Strike"
+Attack = 95
+Defense = 80
+Speed = 100
+Description = "A rare and intelligent dragon known for its incredible speed, stealth, and plasma blasts."

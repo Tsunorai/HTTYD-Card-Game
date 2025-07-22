@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://078r276v3cp8"]
 
-[ext_resource type="Script" uid="uid://duvx4e2i2pjv1" path="res://app/ui/cards/UICard.cs" id="1_fmqh5"]
+[ext_resource type="Script" uid="uid://duvx4e2i2pjv1" path="res://app/ui/deck/UICard.cs" id="1_fmqh5"]
 [ext_resource type="Texture2D" uid="uid://6j6pr4vx6s0c" path="res://app/assets/resources/cards/card-background.png" id="2_3xd5t"]
 [ext_resource type="Texture2D" uid="uid://cmv5w8fvpgkrb" path="res://app/assets/resources/cards/dragon.jpg" id="3_fmqh5"]
 
-[node name="UiCard" type="Control"]
+[node name="UICard" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
