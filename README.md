@@ -39,7 +39,10 @@ This is a 2D card-collection game inspired by the *How to Train Your Dragon* uni
 
 - **Engine**: Godot  
 - **Graphics**: 2D  
-- **No animations planned for now**  
+- **No animations planned for now**
+  
+### Core seperation
+The core game logic is separated from the UI layer. If you want to reuse the same card-based game mechanics in a different format—such as a 3D or animated game—you can fork this project and simply replace the contents of the **UI** folder with your custom interface.
 
 ## Help Request
 
