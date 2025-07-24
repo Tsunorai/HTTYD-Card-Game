@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cp3mjb5l602e3" path="res://app/ui/deck/UIDeck.cs" id="1_0ycai"]
 
-[node name="UIDeck" type="Node2D"]
+[node name="UIDeck" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_0ycai")
 
 [node name="Container" type="HFlowContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
