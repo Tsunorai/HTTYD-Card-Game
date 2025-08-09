@@ -6,7 +6,8 @@ public partial class PlayerManager : Node
 {
     public static PlayerManager Instance { get; private set; }
     private readonly string m_PlayerDataPath = "res://app/assets/resources/player.json";
-    public Player m_Player;
+    private Player m_Player;
+    public Player Player { get; private set; }
 
     [Signal]
     public delegate void UpdatePlayerEventHandler();
@@ -29,12 +30,15 @@ public partial class PlayerManager : Node
 
         if (error == Error.Ok)
         {
+            if (json.Data.VariantType != Variant.Type.Dictionary)
+            {
+                GD.PushError("Player data JSON is not an object.");
+                m_Player = new Player("Player", 1, 0, 0, 0);
+                SavePlayer();
+                return;
+            }
             var data = (Dictionary)json.Data;
             m_Player = JsonToPlayer(data);
-        }
-        else
-        {
-            GD.PushError($"Failed to parse player data: {error}");
         }
     }
 
@@ -42,7 +46,7 @@ public partial class PlayerManager : Node
     {
         using var file = FileAccess.Open(m_PlayerDataPath, FileAccess.ModeFlags.Write);
         Json json = new();
-        string playerData = Json.Stringify(PlayerToJson(m_Player));
+        string playerData = Json.Stringify(PlayerToJson(Player));
         file.StoreString(playerData);
         GD.Print($"Player data saved: {playerData}");
     }
@@ -53,7 +57,7 @@ public partial class PlayerManager : Node
             json["name"].ToString(),
             json["level"].As<int>(),
             json["riding"].As<short>(),
-            json["knowladge"].As<short>(),
+            json["knowledge"].As<short>(),
             json["training"].As<short>()
         );
     }
@@ -65,7 +69,7 @@ public partial class PlayerManager : Node
             { "name", player.Name },
             { "level", player.Level },
             { "riding", player.Riding },
-            { "knowladge", player.Knowladge },
+            { "knowledge", player.Knowledge },
             { "training", player.Training }
         };
     }
