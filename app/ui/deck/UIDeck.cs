@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using Godot;
 
-public partial class UIDeck : Node2D
+public partial class UIDeck : Control
 {
     private List<UICard> m_UICards = [];
-    private Container m_CardContainer;
+    private HFlowContainer m_CardContainer;
 
     public override void _Ready()
     {
-        m_CardContainer = GetNode<Container>("Container");
+        m_CardContainer = GetNode<HFlowContainer>("Container");
         UpdateUI();
     }
     private void UpdateUI()

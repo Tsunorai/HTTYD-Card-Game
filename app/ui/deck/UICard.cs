@@ -32,7 +32,7 @@ public partial class UICard : Control
 
         if (card.Data is CardData data)
         {
-            m_NameLabel.Text = "data.Name";
+            m_NameLabel.Text = data.Name;
             m_ImageTexture.Texture = data.Image;
             m_ClassLabel.Text = data.Class;
             m_DescriptionText.Text = data.Description;
