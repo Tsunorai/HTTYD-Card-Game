@@ -16,7 +16,8 @@ config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 [autoload]
 
-CardManager="*res://app/core/manager/CardManager.cs"
+CardManager="*res://app/core/deck/CardManager.cs"
+PlayerManager="*res://app/core/player/PlayerManager.cs"
 
 [dotnet]
 
