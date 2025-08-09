@@ -18,11 +18,6 @@ config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 CardManager="*res://app/core/manager/CardManager.cs"
 
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-
 [dotnet]
 
 project/assembly_name="HTTYD-CardGame"

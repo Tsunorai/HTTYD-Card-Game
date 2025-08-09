@@ -5,3 +5,5 @@
 [node name="Main" type="Node2D"]
 
 [node name="UIDeck" parent="." instance=ExtResource("1_kq71y")]
+offset_right = 0.0
+offset_bottom = 0.0
