@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dhb6boynmdx84"]
+
+[ext_resource type="Script" uid="uid://1oa86bekqkm3" path="res://app/core/player/PlayerData.cs" id="1_a5md0"]
+
+[resource]
+script = ExtResource("1_a5md0")
+Name = "Player"
+Level = 1
+Riding = 8
+Knowledge = 5
+Training = 6

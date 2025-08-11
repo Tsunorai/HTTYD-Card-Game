@@ -5,7 +5,7 @@ using Godot;
 public partial class CardManager : Node
 {
     public static CardManager Instance { get; private set; }
-    private readonly string m_CardPath = "res://app/assets/resources/cards/data";
+    private readonly string m_DataPath = "res://app/assets/resources/cards/data";
     public readonly List<Card> Cards = [];
 
     [Signal]
@@ -19,10 +19,10 @@ public partial class CardManager : Node
 
     private void LoadCards()
     {
-        DirAccess dir = DirAccess.Open(m_CardPath);
+        DirAccess dir = DirAccess.Open(m_DataPath);
         if (dir == null)
         {
-            GD.PushError($"Failed to open directory: {m_CardPath}");
+            GD.PushError($"Failed to open directory: {m_DataPath}");
             return;
         }
 
@@ -32,7 +32,7 @@ public partial class CardManager : Node
         {
             if (!dir.CurrentIsDir() && fileName.EndsWith(".tres"))
             {
-                string fullPath = Path.Combine(m_CardPath, fileName);
+                string fullPath = Path.Combine(m_DataPath, fileName);
                 var data = ResourceLoader.Load<CardData>(fullPath);
                 if (data != null)
                 {
@@ -42,6 +42,6 @@ public partial class CardManager : Node
             }
             fileName = dir.GetNext();
         }
-        GD.Print($"Loaded {Cards.Count} cards from {m_CardPath}");
+        GD.Print($"Loaded {Cards.Count} cards from {m_DataPath}");
     }
 }

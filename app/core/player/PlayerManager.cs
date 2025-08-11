@@ -1,76 +1,46 @@
 using Godot;
-using Godot.Collections;
-using FileAccess = Godot.FileAccess;
 
 public partial class PlayerManager : Node
 {
     public static PlayerManager Instance { get; private set; }
-    private readonly string m_PlayerDataPath = "res://app/assets/resources/player.json";
+    private readonly string m_DataPath = "res://app/assets/resources/player.tres";
     private Player m_Player;
     public Player Player { get; private set; }
 
     [Signal]
-    public delegate void UpdatePlayerEventHandler();
-
+    public delegate void SavePlayerEventHandler();
     public override void _Ready()
     {
         Instance = this;
-        LoadPlayer();
+        LoadPlayerFromDisk();
 
-        Instance.UpdatePlayer += SavePlayer;
+        Instance.SavePlayer += WritePlayerToDisk;
     }
 
-    private void LoadPlayer()
+    private void LoadPlayerFromDisk()
     {
-        using var file = FileAccess.Open(m_PlayerDataPath, FileAccess.ModeFlags.Read);
-        string playerData = file.GetAsText();
-
-        Json json = new();
-        Error error = json.Parse(playerData);
-
-        if (error == Error.Ok)
+        PlayerData data = ResourceLoader.Load<PlayerData>(m_DataPath);
+        if (data != null)
         {
-            if (json.Data.VariantType != Variant.Type.Dictionary)
-            {
-                GD.PushError("Player data JSON is not an object.");
-                m_Player = new Player("Player", 1, 0, 0, 0);
-                SavePlayer();
-                return;
-            }
-            var data = (Dictionary)json.Data;
-            m_Player = JsonToPlayer(data);
+            GD.Print("Player loaded successfully");
+            m_Player.PlayerData = data;
+        }
+        else
+        {
+            GD.PrintErr("Failed to load Player");
         }
     }
 
-    private void SavePlayer()
+    private void WritePlayerToDisk()
     {
-        using var file = FileAccess.Open(m_PlayerDataPath, FileAccess.ModeFlags.Write);
-        Json json = new();
-        string playerData = Json.Stringify(PlayerToJson(Player));
-        file.StoreString(playerData);
-        GD.Print($"Player data saved: {playerData}");
-    }
-
-    private Player JsonToPlayer(Dictionary json)
-    {
-        return new Player(
-            json["name"].ToString(),
-            json["level"].As<int>(),
-            json["riding"].As<short>(),
-            json["knowledge"].As<short>(),
-            json["training"].As<short>()
-        );
-    }
-
-    private Dictionary PlayerToJson(Player player)
-    {
-        return new Dictionary
+        Error error = ResourceSaver.Save(Player.PlayerData, m_DataPath);
+        if (error == Error.Ok)
         {
-            { "name", player.Name },
-            { "level", player.Level },
-            { "riding", player.Riding },
-            { "knowledge", player.Knowledge },
-            { "training", player.Training }
-        };
+            GD.Print("Player saved successfully");
+        }
+        else
+        {
+            GD.PrintErr("Failed to save Player");
+        }
     }
 }

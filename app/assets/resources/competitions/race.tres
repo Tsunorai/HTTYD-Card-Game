@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CompetitionData" load_steps=2 format=3 uid="uid://4sfrs6qnb88i"]
+
+[ext_resource type="Script" uid="uid://doaecwdr78nuk" path="res://app/core/competition/CompetitionData.cs" id="1_7q7c2"]
+
+[resource]
+script = ExtResource("1_7q7c2")
+Name = 1
+CompetitionStats = 10
+metadata/_custom_type_script = "uid://doaecwdr78nuk"
