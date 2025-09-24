@@ -41,15 +41,6 @@ This is a 2D card-collection game inspired by the *How to Train Your Dragon* uni
 - **Graphics**: 2D  
 - **No animations planned for now**
   
-### Core seperation
-The core game logic is separated from the UI layer. If you want to reuse the same card-based game mechanics in a different format—such as a 3D or animated game—you can fork this project and simply replace the contents of the **UI** folder with your custom interface.
-
-## Help Request
-
-This project is in early conceptual stages and being developed solo for now.  
-If you're interested in contributing to the design, development, art, writing, or testing of this game, your help would be greatly appreciated.  
-Please reach out if you'd like to collaborate on this fan-made project.
-
 ## Disclaimer
 
 This is a **fan-made, non-commercial project** based on the *How to Train Your Dragon* (HTTYD) franchise.  
